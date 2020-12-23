@@ -9,7 +9,7 @@ urlpatterns = [
 
     # 로그인 뷰, 로그아웃 뷰 설정
     path('login/', LoginView.as_view(template_name='accountapp/login.html'), name='login'),
-    path('login/', LogoutView.as_view(), name='logout'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 
 
 ]
