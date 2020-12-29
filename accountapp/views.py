@@ -10,6 +10,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from .decorators import account_ownership_required
+
+account_owner = [account_ownership_required, login_required]
 
 
 @login_required
@@ -43,8 +46,8 @@ class AccountDetailView(DetailView):
     template_name = 'accountapp/detail.html'
 
 
-@method_decorator(login_required, 'get')
-@method_decorator(login_required, 'post')
+@method_decorator(account_owner, 'get')
+@method_decorator(account_owner, 'post')
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountUpdateForm
@@ -65,8 +68,8 @@ class AccountUpdateView(UpdateView):
     #         return HttpResponseForbidden()
 
 
-@method_decorator(login_required, 'get')
-@method_decorator(login_required, 'post')
+@method_decorator(account_owner, 'get')
+@method_decorator(account_owner, 'post')
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'

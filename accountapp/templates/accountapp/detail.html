@@ -6,16 +6,16 @@
         <p>
             {{ user.date_joined }}
         </p>
-        <h2 style = "font-family: 'NanumSquareRoundOTFB';">
+        <h2 style = "font-family: 'NanumSquareRoundOTFEB';">
             {{ target_user.username }}
         </h2>
         {% if target_user == user%}
-        <a href="{% url 'accountapp:update' pk=user.pk %}">
+        <a href="{% url 'accountapp:update' pk=target_user.pk %}">
             <p>
                 Change Info
             </p>
         </a>
-        <a href="{% url 'accountapp:delete' pk=user.pk %}">
+        <a href="{% url 'accountapp:delete' pk=target_user.pk %}">
             <p>
                 Delete user
             </p>
